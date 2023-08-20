@@ -1,0 +1,38 @@
+# OS and IDE files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Build artifacts
+dist/
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Compiled Sass
+*.css
+
+# Dependency lock files
+package-lock.json
+yarn.lock
+
+# Editor specific files
+*.sublime-project
+*.sublime-workspace
+
+# Log files
+*.log
+
+# Compiled JavaScript
+*.min.js
+
+# Ignore Gulp configuration files if they are not required for deployment
+gulpfile.js
+gulpfile.babel.js
