@@ -32,7 +32,3 @@ yarn.lock
 
 # Compiled JavaScript
 *.min.js
-
-# Ignore Gulp configuration files if they are not required for deployment
-# gulpfile.js
-# gulpfile.babel.js

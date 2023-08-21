@@ -4,7 +4,6 @@
   "description": "Dev",
   "main": "dev",
   "scripts": {
-    "build": "gulp",
     "test": "npm i"
   },
   "author": "",

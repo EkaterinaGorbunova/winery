@@ -12,8 +12,8 @@ const ttf2woff2 = require('gulp-ttf2woff2');
 const webp = require('gulp-webp');
 // const avif = require('gulp-avif');
 
-// Check if the build is for deployment (Vercel) or development
-const isProduction = process.env.VERCEL === '1';
+// Check if the build is for deployment or development
+const isProduction = process.env.NODE_ENV === 'production';
 
 const server = function() {
     if (!isProduction) {
@@ -115,5 +115,5 @@ exports.watch = watch;
 if (isProduction) {
     exports.default = gulp.series(images, webpImages, styles, scripts, fonts, icons, html);
 } else {
-    exports.default = gulp.series(watch, server, images, webpImages, styles, scripts, fonts, icons, html);
+    exports.default = gulp.parallel(watch, server, images, webpImages, styles, scripts, fonts, icons, html);
 }
