@@ -12,14 +12,28 @@ const ttf2woff2 = require('gulp-ttf2woff2');
 const webp = require('gulp-webp');
 // const avif = require('gulp-avif');
 
+// Check if the build is for deployment (Vercel) or development
+const isProduction = process.env.VERCEL === '1';
+
 const server = function() {
-    browserSync({
-        server: {
-            baseDir: "dist"
-        }
-    });
+    if (!isProduction) {
+        browserSync({
+            server: {
+                baseDir: "dist"
+            }
+        });
+    }
     gulp.watch("src/*.html").on('change', browserSync.reload);
 };
+
+// const server = function() {
+//     browserSync({
+//         server: {
+//             baseDir: "dist"
+//         }
+//     });
+//     gulp.watch("src/*.html").on('change', browserSync.reload);
+// };
 
 const styles = function() {
     return gulp.src("src/sass/**/*.+(scss|sass)")
@@ -95,6 +109,11 @@ exports.images = images;
 exports.webpImages = webpImages;
 exports.watch = watch;
 
-exports.default = gulp.parallel(watch, server, images, webpImages, styles, scripts, fonts, icons, html);
+// exports.default = gulp.parallel(watch, server, images, webpImages, styles, scripts, fonts, icons, html);
 
-exports.build = gulp.parallel(server, images, webpImages, styles, scripts, fonts, icons, html)
+// Update exports.default to only include necessary tasks for build
+if (isProduction) {
+    exports.default = gulp.series(images, webpImages, styles, scripts, fonts, icons, html);
+} else {
+    exports.default = gulp.series(watch, server, images, webpImages, styles, scripts, fonts, icons, html);
+}
