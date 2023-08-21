@@ -96,3 +96,5 @@ exports.webpImages = webpImages;
 exports.watch = watch;
 
 exports.default = gulp.parallel(watch, server, images, webpImages, styles, scripts, fonts, icons, html);
+
+exports.build = gulp.parallel(server, images, webpImages, styles, scripts, fonts, icons, html)
