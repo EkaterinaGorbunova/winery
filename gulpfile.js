@@ -14,7 +14,7 @@ const webp = require('gulp-webp');
 
 // Check if the build is for deployment (Vercel) or development
 // const isProduction = process.env.VERCEL === '1';
-// const isProduction = process.env.NODE_ENV === 'production';
+// Check if the build is for deployment (Netlify) or development
 const isProduction = process.env.NETLIFY === 'true';
 
 const server = function() {
@@ -27,15 +27,6 @@ const server = function() {
     }
     gulp.watch("src/*.html").on('change', browserSync.reload);
 };
-
-// const server = function() {
-//     browserSync({
-//         server: {
-//             baseDir: "dist"
-//         }
-//     });
-//     gulp.watch("src/*.html").on('change', browserSync.reload);
-// };
 
 const styles = function() {
     return gulp.src("src/sass/**/*.+(scss|sass)")
