@@ -12,7 +12,8 @@ const ttf2woff2 = require('gulp-ttf2woff2');
 const webp = require('gulp-webp');
 // const avif = require('gulp-avif');
 
-// Check if the build is for deployment or development
+// Check if the build is for deployment (Vercel) or development
+// const isProduction = process.env.VERCEL === '1';
 const isProduction = process.env.NODE_ENV === 'production';
 
 const server = function() {
